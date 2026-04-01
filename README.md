@@ -8,5 +8,7 @@
 
 ### changes to make:
 
+- Relu is the used activation function, Gelu is standard, move to that
+
 - tokenization, source uses character-tokenization
 -
