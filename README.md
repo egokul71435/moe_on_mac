@@ -19,6 +19,14 @@ To save the model after training:
 torch.save(model.state_dict(), 'sparse_moe.pt')
 ```
 
+To load the saved weights (`sparse_moe.pt` included):
+```python
+model = SparseMoeLanguageModel()
+model.load_state_dict(torch.load('sparse_moe.pt', map_location=device))
+model.to(device)
+model.eval()
+```
+
 To run inference from a text prompt:
 ```python
 prompt = "To be or not"
@@ -30,8 +38,8 @@ print(decode(model.generate(context, max_new_tokens=200)[0].tolist()))
 
 - **Character-level tokenization**: vocab is ~65 chars vs. 50k+ subword tokens in modern models — output is Shakespeare-shaped noise, not coherent text
 - **Model size**: 8.996545 M parameters (`n_layer=8`, `n_embed=128`) — GPT-2 small is 117M
-- **Training budget**: `max_iters=200` is far too short; loss remains high and the model underfits
-- **No model persistence**: training state is lost on kernel restart unless manually saved with `torch.save`
+- **Training budget**: base model trained for 50,000 steps on CPU (~9M parameters), taking 569 minutes and 48.7 seconds total (i.e ~9.5 hours)
+- **No model persistence**: training state is lost on kernel restart unless manually saved with `torch.save` — trained weights saved to `sparse_moe.pt`
 - **MoE scale**: 8 experts with `top_k=2` is too small to see real MoE efficiency gains
 - **No load balancing loss**: auxiliary loss to penalize uneven expert utilization is absent, so expert collapse is possible despite the injected noise
 - **Activation function**: ReLU used instead of the standard GELU for transformer FFN layers
