@@ -170,6 +170,10 @@ cython_debug/
 # Model weights
 *.pt
 
+# Generated assets
+plot_loss.py
+archived_readme.md
+
 # Data directory — ignore everything except the two Python scripts
 moe-llm/data/*
 !moe-llm/data/*.py
