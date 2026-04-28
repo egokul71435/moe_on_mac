@@ -205,7 +205,7 @@ The alternative — looping over tokens and calling each expert individually —
 
 ### Goal
 
-Design and train a sparse MoE language model that achieves at least GPT-2-level performance (117M+ effective parameters, ≤3.28 cross-entropy on FineWeb val) while running entirely on Mac hardware. No CUDA. No cloud.
+Design and train a sparse MoE language model that achieves at least GPT-2-level performance (117M+ effective parameters, ≤3.28 cross-entropy on FineWeb val) while running entirely on Mac hardware without CUDA / cloud.
 
 The base implementation proved out the MoE mechanics. The extension addresses every structural limitation of the base: tokenization, scale, architecture components, training corpus, and hardware compatibility.
 
