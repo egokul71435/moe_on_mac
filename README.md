@@ -252,7 +252,7 @@ See [`PLAN.md`](PLAN.md) for the full phase breakdown. Summary:
 | 4 — Training | Muon + AdamW, `mx.compile`, checkpoint every 2h |
 | 5 — Evaluation | FineWeb val loss, HellaSwag, LAMBADA, WikiText-103, router monitoring |
 
-**Current status:** Phase 0 complete. Phase 1 in progress — FineWeb-Edu streaming is set up, BPE training pending.
+**Current status:** Working on custom tokenizer
 
 ### Project Structure
 
